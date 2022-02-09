@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
+// import Review from "./Review";
+import Reviews from "./Reviews";
 
 function AnimeDetails() {
   const navigate = useNavigate();
@@ -13,7 +15,7 @@ function AnimeDetails() {
       .get(`${API}/anime/${id}`)
       .then((response) => setAnime(response.data))
       .catch((error) => console.warn(error));
-  }, [id]);
+  }, [API, id]);
 
   const handleDelete = () => {
     axios
@@ -47,6 +49,7 @@ function AnimeDetails() {
           <button onClick={handleDelete}>Delete</button>
         </div>
       </div>
+      <Reviews />
     </article>
   );
 }
